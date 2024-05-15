@@ -1,0 +1,38 @@
+{
+  "name": "sdk",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup index.ts --format esm --dts",
+    "lint": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "peerDependencies": {
+    "@noir-lang/acvm_js": "^0.45.0",
+    "@noir-lang/backend_barretenberg": "0.29.0",
+    "@noir-lang/noir_js": "0.29.0",
+    "@noir-lang/noirc_abi": "0.29.0",
+    "noir-ethereum-api-oracles": "file:/Users/artur/Documents/code/noir-ethereum-history-api/ethereum_history_api/oracles"
+  },
+  "dependencies": {
+    "@noir-lang/acvm_js": "^0.45.0",
+    "@noir-lang/backend_barretenberg": "0.29.0",
+    "@noir-lang/noir_js": "0.29.0",
+    "@noir-lang/noirc_abi": "0.29.0",
+    "noir-ethereum-api-oracles": "file:/Users/artur/Documents/code/noir-ethereum-history-api/ethereum_history_api/oracles"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-wasm": "^6.2.2",
+    "rollup-plugin-copy": "^3.5.0",
+    "tslib": "^2.6.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
