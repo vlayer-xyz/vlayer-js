@@ -6,7 +6,9 @@
   "scripts": {
     "test": "vitest",
     "build": "tsup index.ts --format esm --dts",
-    "lint": "tsc"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write *.ts",
+    "format:ci": "prettier --check **/*.ts"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +30,7 @@
     "viem": "^2.9.28"
   },
   "devDependencies": {
+    "prettier": "^3.2.5",
     "tslib": "^2.6.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
