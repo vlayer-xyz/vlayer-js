@@ -1,21 +1,23 @@
-import { SDK } from '../index';
+import { SDK } from './index';
 import { it, describe, expect, vi, afterEach } from 'vitest'
-import { importWasms, generateProof } from '../noir';
+import { importWasms, generateProof } from './noir/index';
+import { mainnet } from 'viem/chains';
 
 describe('constructor()', () => {
   it('should set chainName, chainId and rpcUrl', () => {
     const sdk = new SDK({ chainName: 'mainnet', rpcUrl: 'https://rpc.url' });
 
     expect(sdk.chainName).toBe('mainnet');
-    expect(sdk.rpcUrl).toBe('https://rpc.url');
     expect(sdk.chainId).toBe(1);
+
+    expect(sdk.rpcUrl).toBe('https://rpc.url');
   });
 
   it('should throw an error if chain is not viem supported', () => {
     try {
       new SDK({ chainName: 'invalid', rpcUrl: 'https://rpc.url' });
     } catch (error) {
-      expect((error as Error).message).toBe('Chain invalid is not supported');
+      expect((error as Error).message).toBe('Unsupported chain: invalid');
     }
   });  
 
@@ -23,7 +25,7 @@ describe('constructor()', () => {
     try {
       new SDK({ chainName: 'polygon', rpcUrl: 'https://rpc.url' });
     } catch (error) {
-      expect((error as Error).message).toBe('Chain polygon is not supported');
+      expect((error as Error).message).toBe('Unsupported chain: polygon');
     }
   });
 
@@ -37,7 +39,7 @@ describe('constructor()', () => {
 });
 
 describe('init()', () => { 
-  vi.mock('../noir/index.js', () => {
+  vi.mock('./noir/index', () => {
     return {
       importWasms: vi.fn(),
     }
@@ -66,7 +68,7 @@ describe('init()', () => {
 });
 
 describe('generateKeccakProof()', () => {
-  vi.mock('../noir/index.js', () => {
+  vi.mock('./noir/index', () => {
     return {
       importWasms: vi.fn(),
       generateProof: vi.fn(),
@@ -106,7 +108,7 @@ describe('generateApeProof()', () => {
     );
 
     expect(generateProof).toBeCalledWith('is_ape_owner', { 
-      chain_id: 1, 
+      chain_id: mainnet.id, 
       block_number: 1, 
       token_id: [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1

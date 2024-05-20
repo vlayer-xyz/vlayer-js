@@ -19,7 +19,7 @@ class SDK {
 
   constructor({ chainName, rpcUrl }: { chainName: string; rpcUrl: string }) {
     if (!isChainValid(chainName)) {
-      throw new Error(`Chain ${chainName} is not supported`);
+      throw new Error(`Unsupported chain: ${chainName}`);
     }
     if (!isJsonRpcUrlValid(rpcUrl)) {
       throw new Error(`Invalid JSON RPC URL: ${rpcUrl}`);
