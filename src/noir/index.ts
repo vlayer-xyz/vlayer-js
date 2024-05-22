@@ -15,7 +15,7 @@ export const importWasms = async () => {
 }
 
 export const generateProof = async (circuitName: string, inputs: any, sdk: any) => {
-  const circuit  =  await import(`../circuits/${circuitName}.json`);
+  const circuit  =  await import(`../../circuits/${circuitName}.json`);
   const backend = new BarretenbergBackend(circuit as CompiledCircuit);
   const noir = new Noir(circuit as CompiledCircuit, backend);
 

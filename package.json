@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest",
-    "build": "tsup index.ts --format esm --dts",
+    "build": "tsup src/index.ts --format esm --dts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write *.ts",
     "format:ci": "prettier --check **/*.ts"
